@@ -112,7 +112,7 @@ impl Writer {
                 // printable ASCII byte or newline
                 0x20..=0x7e | b'\n' => self.write_byte(byte),
                 // not part of printable ASCII range
-                _ => () 
+                _ => self.write_byte(0xfe),
             }
         }
     }
@@ -144,7 +144,8 @@ pub fn print_something() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
 
-    writer.write_byte(b'H');
-    writer.write_string("ello ");
+    // writer.write_byte(b'H');
+    writer.write_string("Hello World!");
+    writer.write_str("Hello World!").unwrap();
     write!(writer, "The numbers are {} and {}", 43, 1.0 / 3.0).unwrap();
 }
