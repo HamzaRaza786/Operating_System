@@ -29,10 +29,6 @@ pub extern "C" fn _start() -> ! {
     )
     .unwrap();
 
-    // vga_buffer::print_something();
-    // println!("Hello How are you?");
-    // println!("Hello World{}", "!");
-
     #[cfg(test)]
     test_main();
     // panic!("In here");
